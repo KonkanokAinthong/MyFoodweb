@@ -5,7 +5,7 @@ const cookieSession = require('cookie-session');
 const bcrypt = require('bcrypt');
 const mysql = require('mysql2');
 const { body, validationResult } = require('express-validator');
-const port= 3306
+const port= 8000
 const app = express()
 
 app.set('view engine','ejs')
