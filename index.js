@@ -167,8 +167,67 @@ app.get("/Login",(req,res) =>{
 app.get("/payment",(req,res) =>{
     res.render('payment')
 })
+app.get("/buyFatty",(req,res) =>{
+    res.render('buyFatty')
+})
+app.get("/buyganeral",(req,res) =>{
+    res.render('buyganeral')
+})
+app.get("/buyhealthy",(req,res) =>{
+    res.render('buyhealthy')
+})
+app.get("/bysugar",(req,res) =>{
+    res.render('bysugar')
+})
+app.get("/buyR11",(req,res) =>{
+    res.render('buyR11')
+})
+app.get("/buyR12",(req,res) =>{
+    res.render('buyR12')
+})
+app.get("/buyR13",(req,res) =>{
+    res.render('buyR13')
+})
+app.get("/buyR14",(req,res) =>{
+    res.render('buyR14')
+})
+app.get("/buyR15",(req,res) =>{
+    res.render('buyR15')
+})
+app.get("/buyR16",(req,res) =>{
+    res.render('buyR16')
+})
 
-
+app.get("/payment11",(req,res) =>{
+    res.render('payment11')
+})
+app.get("/payment12",(req,res) =>{
+    res.render('payment12')
+})
+app.get("/payment13",(req,res) =>{
+    res.render('payment13')
+})
+app.get("/payment14",(req,res) =>{
+    res.render('payment14')
+})
+app.get("/payment15",(req,res) =>{
+    res.render('payment15')
+})
+app.get("/payment16",(req,res) =>{
+    res.render('payment16')
+})
+app.get("/paymentFatty",(req,res) =>{
+    res.render('paymentFatty')
+})
+app.get("/paymentganeral",(req,res) =>{
+    res.render('paymentganeral')
+})
+app.get("/paymenthealthy",(req,res) =>{
+    res.render('paymenthealthy')
+})
+app.get("/paymentsugar",(req,res) =>{
+    res.render('paymentsugar')
+})
 
 
 
