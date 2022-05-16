@@ -95,11 +95,15 @@ margin-right: 480px;
             <div class="w3-half">
                 <label><i class="fa fa-calendar-o"></i> Password</label>
                
-                <input class="w3-input w3-border" type=password name=user maxlength=8 required>
+                <input class="w3-input w3-border" type=password name="Pass" maxlength=8 required>
               </div>
           
         </div>
-       
+        <% if (locals.login_errors) { 
+          login_errors.forEach(function(error_msg){ %>
+          <div class="error"><%= error_msg %></div>
+      <% });
+      } %>
         <p class="w3-right">          
         <button class="button" type="submit">Login</button>
         

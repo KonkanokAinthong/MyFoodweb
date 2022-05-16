@@ -13,7 +13,7 @@ app.use(express.static('public'))
 app.use(express.urlencoded({extended:false}));
 app.set('views',path.join(__dirname,'views'));
 app.use(cookieSession({
-    name : 'myfood',
+    name : 'Session',
     keys : ['myfood1','myfood2'],
     maxAge: 3600*2000
 }))
@@ -36,7 +36,7 @@ const ifNotLoggedin = (req,res,next) => {
 
 const ifLoggedin = (req,res,next) => {
     if(req.session.isLoggedIn){
-        return res.redirect('/home');
+        return res.redirect('/');
     }
     next();
 }
@@ -224,7 +224,7 @@ app.post('/Singin1', ifLoggedin,
 
 app.post('/Login', ifLoggedin, [
     body('Email').custom((value) => {
-        return locate.execute('SELECT email FROM users WHERE email=?', [value])
+        return connection.execute('SELECT email FROM users WHERE email=?', [value])
         .then(([rows]) => {
             if(rows.length == 1){
                 return true;
@@ -239,14 +239,14 @@ app.post('/Login', ifLoggedin, [
     const {Pass, Email} = req.body;
     if(validation_result.isEmpty()){
 
-        locate.execute("SELECT * FROM users WHERE email=?",[Email])
+        connection .execute("SELECT * FROM users WHERE email=?",[Email])
         .then(([rows]) => {
             bcrypt.compare(Pass, rows[0].password).then(compare_result => {
                 if(compare_result === true){
-                    req.session.ifLoggedIn = true;
+                    req.session.isLoggedIn = true;
                     req.session.userID = rows[0].id;
 
-                    res.redirect('/home');
+                    res.redirect('/');
                 }
                 else{
                     res.render('Login',{
@@ -273,6 +273,7 @@ app.post('/Login', ifLoggedin, [
         });
     }
 });
+
 
 app.get('/logout',(req,res)=>{
     //session destroy
